@@ -1,5 +1,6 @@
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo.js';
+import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import './App.css';
 
 function App() {
@@ -7,9 +8,8 @@ function App() {
     <div className="App">
       <Navigation />
       <Logo />
-      {/* 
       <ImageLinkForm />
-      <FaceRecognition /> */}
+      {/* <FaceRecognition /> */}
     </div>
   );
 }
