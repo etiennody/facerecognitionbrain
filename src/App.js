@@ -1,5 +1,6 @@
 import React from 'react';
 import Particles from 'react-particles-js';
+import Clarifai from 'clarifai';
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo.js';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
@@ -18,6 +19,10 @@ const particlesOptions = {
   }
 }
 
+const app = new Clarifai.App({
+  apiKey: process.env.REACT_APP_CLARIFAI_API_KEY
+});
+
 class App extends React.Component {
   constructor() {
     super();
@@ -32,6 +37,18 @@ class App extends React.Component {
 
   onButtonSubmit = () => {
     console.log('Click!!!');
+    app.models.predict(
+      process.env.REACT_APP_CLARIFAI_MODEL_ID,
+      'https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg')
+      .then(
+        function (response) {
+          // do something with reponse
+          console.log(response)
+        },
+        function (err) {
+          // there was an error
+        }
+      )
   }
 
   render() {
@@ -43,7 +60,10 @@ class App extends React.Component {
         <Navigation />
         <Logo />
         <Rank />
-        <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
+        <ImageLinkForm
+          onInputChange={this.onInputChange}
+          onButtonSubmit={this.onButtonSubmit}
+        />
         {/* <FaceRecognition /> */}
       </div>
     );
