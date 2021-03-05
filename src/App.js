@@ -29,21 +29,21 @@ class App extends React.Component {
     super();
     this.state = {
       input: '',
+      imageUrl: ''
     }
   }
 
   onInputChange = (event) => {
-    console.log(event.target.value);
+    this.setState({ input: event.target.value });
   }
 
   onButtonSubmit = () => {
-    console.log('Click!!!');
+    this.setState({ imageUrl: this.state.input });
     app.models.predict(
-      process.env.REACT_APP_CLARIFAI_MODEL_ID,
-      'https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg')
+      Clarifai.FACE_DETECT_MODEL,
+      this.state.input)
       .then(
         function (response) {
-          // do something with reponse
           console.log(response)
         },
         function (err) {
@@ -65,7 +65,7 @@ class App extends React.Component {
           onInputChange={this.onInputChange}
           onButtonSubmit={this.onButtonSubmit}
         />
-        <FaceRecognition />
+        <FaceRecognition imageUrl={this.state.imageUrl} />
       </div>
     );
 
