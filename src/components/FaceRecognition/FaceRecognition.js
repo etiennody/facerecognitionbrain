@@ -5,6 +5,7 @@ const FaceRecognition = ({ imageUrl }) => {
     <div className='center ma'>
       <div className='absolute mt3'>
         <img
+          id='inputimage'
           alt=''
           src={imageUrl}
           width='500px'
