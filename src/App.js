@@ -111,7 +111,10 @@ class App extends React.Component {
         { route === 'home'
           ? <div>
             <Logo />
-            <Rank />
+            <Rank
+              username={this.state.user.username}
+              entries={this.state.user.entries}
+            />
             <ImageLinkForm
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
