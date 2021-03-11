@@ -7,6 +7,7 @@ import Register from './components/Register/Register';
 import Logo from './components/Logo/Logo.js';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 const particlesOptions = {
@@ -147,6 +148,7 @@ class App extends React.Component {
               : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
           )
         }
+        <Footer />
       </div>
     );
   }
